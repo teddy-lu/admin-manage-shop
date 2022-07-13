@@ -19,6 +19,8 @@ func main() {
 	flag.Parse()
 	config.InitConfig(env)
 
+	bootstrap.SetupDB()
+
 	r := gin.New()
 
 	bootstrap.SetupRoute(r)
