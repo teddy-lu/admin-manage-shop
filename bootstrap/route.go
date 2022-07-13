@@ -1,6 +1,7 @@
 package bootstrap
 
 import (
+	"admin-manage-shop/app/http/middlewares"
 	"admin-manage-shop/routes"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -30,5 +31,5 @@ func setup404Handler(router *gin.Engine) {
 }
 
 func registerGlobalMiddleware(router *gin.Engine) {
-	router.Use(gin.Logger(), gin.Recovery())
+	router.Use(middlewares.Logger(), gin.Recovery())
 }

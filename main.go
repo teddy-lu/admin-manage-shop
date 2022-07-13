@@ -19,6 +19,8 @@ func main() {
 	flag.Parse()
 	config.InitConfig(env)
 
+	bootstrap.SetupLogger()
+	gin.SetMode(gin.ReleaseMode)
 	bootstrap.SetupDB()
 
 	r := gin.New()
