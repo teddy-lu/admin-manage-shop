@@ -3,12 +3,12 @@ package bootstrap
 import (
 	"admin-manage-shop/pkg/config"
 	"admin-manage-shop/pkg/database"
+	"admin-manage-shop/pkg/logger"
 	"errors"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"time"
 )
 
@@ -33,7 +33,8 @@ func SetupDB() {
 		panic(errors.New("database connection not supported"))
 	}
 
-	database.Connect(dbConfig, logger.Default.LogMode(logger.Info))
+	database.Connect(dbConfig, logger.NewGormLogger())
+	//database.Connect(dbConfig, logger.Default.LogMode(logger.Info))
 	// 设置最大连接数
 	database.SQLDB.SetMaxOpenConns(config.GetInt("database.mysql.max_open_connections"))
 	// 设置最大空闲连接数
