@@ -1,17 +1,22 @@
 package routes
 
 import (
+	"admin-manage-shop/app/http/controllers/auth"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func RegisterAPIRoutes(r *gin.Engine) {
-	v1 := r.Group("api")
+	api := r.Group("api")
 	{
-		v1.GET("/", func(c *gin.Context) {
+		api.GET("/", func(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{
 				"msg": "Hello World",
 			})
 		})
+
+		authGroup := api.Group("/auth")
+		vcc := new(auth.VerifyCodeController)
+		authGroup.POST("/verify-codes/captcha", vcc.ShowCaptcha)
 	}
 }
