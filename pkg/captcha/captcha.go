@@ -33,6 +33,16 @@ func NewCaptcha() *Captcha {
 			config.GetInt("captcha.dotcount"),
 		)
 
+		//driver := base64Captcha.NewDriverMath(
+		//	config.GetInt("captcha.height"),
+		//	config.GetInt("captcha.width"),
+		//	15,
+		//	0,
+		//	nil,
+		//	nil,
+		//	[]string{"3Dumb.ttf"},
+		//)
+
 		internalCaptcha.Base64Captcha = base64Captcha.NewCaptcha(driver, &store)
 
 	})
