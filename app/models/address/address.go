@@ -1,6 +1,9 @@
-package models
+package address
 
-import "time"
+import (
+	"admin-manage-shop/app/models"
+	"time"
+)
 
 type Address struct {
 	AddressID    int64     `json:"address_id" gorm:"column:address_id;primaryKey;autoIncrement;"`
@@ -15,5 +18,5 @@ type Address struct {
 	ContactName  string    `json:"contact_name" gorm:"column:contact_name"`
 	DeleteTime   time.Time `json:"delete_time" gorm:"column:delete_time"`
 
-	CommonTimestampField
+	models.CommonTimestampField
 }
